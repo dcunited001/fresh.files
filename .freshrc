@@ -1,0 +1,45 @@
+# ==========================================
+# config
+# ==========================================
+lowercase(){
+  echo "$1" | sed "y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/"
+}
+
+# set FRESH_UNAME OS here (to build for another system)
+FRESH_UNAME=
+FRESH_UNAME=`lowercase ${FRESH_UNAME:-\`uname\`}`
+
+# for more advanced OS Detection:
+# - https://github.com/coto/server-easy-install/blob/master/lib/core.sh
+# - plain `uname` work work
+case $FRESH_UNAME in
+  mac|darwin)
+    FRESH_OS=mac
+    ;;
+  deb|debian|ubu|ubuntu)
+    FRESH_OS=deb
+    ;;
+  redhat)
+    FRESH_OS=red
+    ;;
+  arch)
+    FRESH_OS=arch
+    ;;
+  sun)
+    FRESH_OS=sun
+    ;;
+  *)
+    _fatal_error "OS Not Found" ;;
+    ;;
+esac
+
+# ==========================================
+# fresh
+# ==========================================
+
+fresh freshshell/fresh bin/fresh --bin
+
+
+
+
+
