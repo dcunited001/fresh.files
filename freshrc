@@ -29,7 +29,7 @@ case $FRESH_UNAME in
     FRESH_OS=sun
     ;;
   *)
-    _fatal_error "OS Not Found" ;;
+    _fatal_error "OS Not Found"
     ;;
 esac
 
